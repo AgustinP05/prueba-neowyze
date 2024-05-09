@@ -1,9 +1,9 @@
-// import Image from 'next/image'
+import FilmsList from './filmsList'
 
-export default function Films () {
+export default async function Films ({ params }) {
   return (
-    <div>
-      <h1>Hola</h1>
-    </div>
+    <section>
+      <FilmsList />
+    </section>
   )
 }
