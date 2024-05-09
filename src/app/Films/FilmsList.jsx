@@ -12,12 +12,12 @@ export default async function FilmsList ({ params }) {
   const films = filmsData.results // filmsData tiene toda la informacion del fetching. Sin embargo, toda la informacion que buscamos está dentro de results
 
   // Para ver en consola
-  //   films.map(film => ( console.log(film.results)))
+  // films.map(film => (console.log(film.title)))
 
   return (
     <div className='w-[60%] mx-auto grid grid-cols-3 gap-4  text-center'>
-      {films.map(film =>
-        <Link key={film.episode_id} href={'./Films/' + film.episode_id} className='group flex flex-col justify-center items-center py-4 h-80 w-60 mx-auto rounded-2xl transition-all border border-transparent hover:border-neutral-700 hover:bg-neutral-800 hover:bg-opacity-30'>
+      {films.map((film, index) =>
+        <Link key={(index + 1)} href={'./Films/' + (index + 1)} className='group flex flex-col justify-center items-center py-4 h-80 w-60 mx-auto rounded-2xl transition-all border border-transparent hover:border-neutral-700 hover:bg-neutral-800 hover:bg-opacity-30'>
 
           {/* Titulo de la pelicula */}
           <small className='font-bold'>Episodio {film.episode_id}</small>
