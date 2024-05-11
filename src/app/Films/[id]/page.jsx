@@ -1,6 +1,4 @@
-// import Link from 'next/link'
-// import Image from 'next/image'
-
+// En este componente se encontrará el componente principal de la ruta para Pelicula especifica. Así divido los componentes en la carta que tiene la info de la pelicula y abajo el carrucel con sus personajes
 import FilmSpecific from './FilmSpecific'
 import CharCarrucel from './CharCarrucel'
 
