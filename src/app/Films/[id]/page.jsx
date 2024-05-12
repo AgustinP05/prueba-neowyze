@@ -1,6 +1,6 @@
 // En este componente se encontrará el componente principal de la ruta para Pelicula especifica. Así divido los componentes en la carta que tiene la info de la pelicula y abajo el carrucel con sus personajes
 import FilmSpecific from './FilmSpecific'
-import CharCarrucel from './CharCarrucel'
+import CharCarrusel from './CharCarrusel'
 
 const fetchOneFilm = (id) => {
   return fetch(`https://swapi.dev/api/films/${id}`)
@@ -12,9 +12,9 @@ export default async function FilmSpecificPage ({ params }) {
   const film = await fetchOneFilm(id)
 
   return (
-    <section>
+    <section className='flex flex-col'>
       <FilmSpecific film={film} />
-      <CharCarrucel charList={film.characters} />
+      <CharCarrusel charList={film.characters} />
     </section>
   )
 }
