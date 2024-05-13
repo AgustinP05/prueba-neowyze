@@ -11,7 +11,8 @@ export default async function CharCarrusel (props) {
   const charData = await Promise.all(charList.map((charUrl) => fetch(charUrl).then(res => res.json()))) // Promise.all. El viejo truco que utilizo para esperar a que todas las solicitudes terminen para continuar
 
   return (
-    <section className='flex justify-center'>
+    <section className='flex flex-col items-center justify-center my-5'>
+      <h2 className='text-xl mb-2'>Personajes que participaron en este film</h2>
       <div className='charcarrusel flex gap-x-4 px-4 w-[81%] overflow-hidden hover:overflow-x-auto '>
         {charData.map((char, index) =>
 
