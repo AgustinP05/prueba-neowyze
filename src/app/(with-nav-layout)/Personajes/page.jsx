@@ -1,3 +1,5 @@
+// La forma de navegar entre paginas de personajes, es con la url next y previous
+
 import CharPagination from './CharPagination'
 import NavPagination from './NavPagination'
 
@@ -13,7 +15,7 @@ export default async function Personajes (context) {
 
   return (
     <section>
-      {/* Aquí están los Links que redireccionan a la  */}
+      {/* A NavPagination le pasamos la pagina actual, la siguiente y la anterior. Mientras que CharPagination recibe los datos del fetch hecho. Cada vez que cambiamos de pagina, hace otra vez la llamada a la API  */}
       <NavPagination page={context.searchParams.page} prev={charsData.previous} next={charsData.next} />
       <CharPagination chars={chars} />
     </section>
