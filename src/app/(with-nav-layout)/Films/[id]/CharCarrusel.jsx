@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-const getId = (url) => {
+export const getId = (url) => {
   return url.split('/').filter(Boolean).pop() // Increible truco guardado de los cursos de cuando empecé. Utilizo el split para crear un array que separe cada elemento entre '/'. Y el pop() el ultimo elemento de este array, que justamente es el numero que necesito
 }
 
