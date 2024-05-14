@@ -21,7 +21,6 @@ export default async function CharPagination ({ chars }) {
                   ? 'He is'
                   : character.gender === 'female' ? 'She is' : ''}  {(character.gender === 'n/a' || character.gender === 'none') ? 'Is a droid' : character.gender}
                 </h3>
-                <h3>{character.eye_color === 'unknown' ? 'No eyes register' : 'Whit ' + character.eye_color} {(character.gender === 'n/a' || character.gender === 'none') ? 'lights' : 'eyes'}</h3>
 
                 <h3>{character.eye_color === 'unknown' ? `No ${(character.gender === 'n/a' || character.gender === 'none') ? 'lights' : 'eyes'} register` : 'Whit ' + character.eye_color + ` ${(character.gender === 'n/a' || character.gender === 'none') ? 'lights' : 'eyes'}`}</h3>
 
