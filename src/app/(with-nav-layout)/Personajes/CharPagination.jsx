@@ -19,9 +19,12 @@ export default async function CharPagination ({ chars }) {
               <div className='w-full h-full flex flex-col justify-center items-center font-bold transition-all'>
                 <h3>{character.gender === 'male'
                   ? 'He is'
-                  : character.gender === 'female' ? 'She is' : ''}  {character.gender === 'n/a' ? 'Is a droid' : character.gender}
+                  : character.gender === 'female' ? 'She is' : ''}  {(character.gender === 'n/a' || character.gender === 'none') ? 'Is a droid' : character.gender}
                 </h3>
-                <h3>with {character.eye_color} {character.gender === 'n/a' ? 'lights' : 'eyes'}</h3>
+                <h3>{character.eye_color === 'unknown' ? 'No eyes register' : 'Whit ' + character.eye_color} {(character.gender === 'n/a' || character.gender === 'none') ? 'lights' : 'eyes'}</h3>
+
+                <h3>{character.eye_color === 'unknown' ? `No ${(character.gender === 'n/a' || character.gender === 'none') ? 'lights' : 'eyes'} register` : 'Whit ' + character.eye_color + ` ${(character.gender === 'n/a' || character.gender === 'none') ? 'lights' : 'eyes'}`}</h3>
+
               </div>
 
             </div>
