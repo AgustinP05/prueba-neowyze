@@ -57,7 +57,7 @@ export default function Home () {
         </Link>
 
         <Link
-          href='/Personajes'
+          href='/Personajes?page=1'
           className='group rounded-lg border border-transparent px-5 py-4 transition-colors  hover:bg-gray-100 hover:border-neutral-700 hover:bg-neutral-800/30'
           rel='noopener noreferrer'
         >
