@@ -52,23 +52,23 @@ export default function NavPagination ({ prev, next, page }) {
     <header className='w-full mb-5'>
       <h1 className=' text-xl font-bold text-center mb-2'>Todos los personajes:</h1>
 
-      <div className='sticky top-10 z-50 w-full h-10 flex justify-around items-center rounded-2xl bg-slate-800/60'>
+      <div className='sticky top-10 z-50 w-full py-2 sm:py-0 h-32 sm:h-10 flex flex-col sm:flex-row justify-around items-center rounded-2xl bg-slate-800/60'>
 
-        <span className='w-[10%]' />
-        <div className='flex justify-between items-center w-[10%] text-2xl '>
+        <span className='hidden sm:inline  w-[10%]' />
+        <div className='flex justify-between items-center w-[50%] sm:w-[30%] md:w-[20%] lg:w-[10%] text-3xl sm:text-2xl '>
 
-          <Link href={constructUrl('/Personajes', getId(prev), filters)} className='flex justify-center items-center rounded-full bg-slate-300 w-7 h-7 text-black font-bold hover:bg-slate-300/50 transition-all'>&lt;-</Link>
-          <span className='flex justify-center items-center bg-slate-300/80 w-10 h-8 rounded-full text-black font-bold'>{page}</span> {/* Mostramos la pagina actual */}
-          <Link href={constructUrl('/Personajes', getId(next), filters)} className='flex justify-center items-center rounded-full bg-slate-300 w-7 h-7 text-black font-bold hover:bg-slate-300/50 transition-all'>-&gt;</Link>
+          <Link href={constructUrl('/Personajes', getId(prev), filters)} className='flex justify-center items-center rounded-full bg-slate-300 w-10 h-10 sm:w-7 sm:h-7 text-black font-bold hover:bg-slate-300/50 transition-all'>&lt;-</Link>
+          <span className='flex justify-center items-center bg-slate-300/80 w-12 h-10 sm:w-10 sm:h-8 rounded-full text-black font-bold'>{page}</span> {/* Mostramos la pagina actual */}
+          <Link href={constructUrl('/Personajes', getId(next), filters)} className='flex justify-center items-center rounded-full bg-slate-300 w-10 h-10 sm:w-7 sm:h-7 text-black font-bold hover:bg-slate-300/50 transition-all'>-&gt;</Link>
 
         </div>
-        <div className='w-[10%] flex justify-center'>
+        <div className='w-[50%] sm:w-[10%] h-10  flex justify-center bg-gray-700 sm:bg-transparent rounded-lg'>
           {/* Dropdown menu */}
           <div className='flex items-center justify-center p-4'>
             <button
               id='dropdownDefault'
               onClick={() => setDropdownOpen(!isDropdownOpen)}
-              className='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center'
+              className='text-white bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-lg sm:text-sm px-4 py-2.5 text-center inline-flex items-center'
               type='button'
             >
               Filter
@@ -84,7 +84,7 @@ export default function NavPagination ({ prev, next, page }) {
               </svg>
             </button>
 
-            <div id='dropdown' className={`absolute top-12 z-10 w-56 p-3 rounded-lg shadow bg-gray-700 transition-transform duration-300 ease-out origin-top ${isDropdownOpen ? 'scale-y-100' : 'scale-y-0'}`}>
+            <div id='dropdown' className={`absolute top-32 sm:top-12 z-10 w-56 p-3 rounded-lg shadow bg-gray-700 transition-transform duration-300 ease-out origin-top ${isDropdownOpen ? 'scale-y-100' : 'scale-y-0'}`}>
               <h6 className='mb-3 text-sm font-medium text-white'>Category</h6>
               <ul className='space-y-2 text-sm' aria-labelledby='dropdownDefault'>
                 {/* Categoria Ojos */}

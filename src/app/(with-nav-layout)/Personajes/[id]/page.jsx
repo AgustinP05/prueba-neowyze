@@ -18,7 +18,7 @@ export default async function PersonajesSpecificPage ({ params }) {
   const char = await fetchOneChar(id)
 
   return (
-    <section className='h-[800px] flex flex-col justify-center'>
+    <section className='h-[70%] md:h-[800px] flex flex-col justify-center'>
       <DynamicCharSpecific char={char} />
     </section>
   )

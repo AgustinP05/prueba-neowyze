@@ -5,10 +5,10 @@ export default async function FilmSpecific (props) {
 
   return (
     <article className=''>
-      <div className='w-[50%] flex justify-center mt-10 mb-6 mx-auto rounded-2xl pt-4 pb-4 bg-neutral-800 bg-opacity-30'>
-        <div className='w-[500px] bg-neutral-600/50 rounded-2xl rounded-tr-none rounded-br-none'>
+      <div className='w-[80%] sm:w-[50%] flex justify-center mt-10 mb-10 sm:mb-6 md:mb-16 mx-auto rounded-2xl pt-4 pb-4 bg-neutral-800 bg-opacity-30'>
+        <div className='w-[100px] sm:w-[500px] flex justify-center items-center bg-neutral-600/50 rounded-2xl rounded-tr-none rounded-br-none'>
           <Image
-            className=' m-auto'
+            className='w-[50%] sm:w-[175px] m-auto'
             src='/jedi.svg'
             alt='Jedi Logo'
             width={175}
