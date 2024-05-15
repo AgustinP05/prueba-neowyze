@@ -15,7 +15,8 @@ export default async function CharCarrusel (props) {
 
   return (
     <section className='flex flex-col items-center justify-center my-5'>
-      <h2 className='text-xl mb-2'>Personajes que participaron en este film</h2>
+      <h2 className='text-xl  font-bold text-center mb-2'>Personajes que participaron en este film:</h2>
+      <p className='md:hidden text-sm font-bold text-center mb-2'>Presione y mantenga para deslizar el carrusel</p>
       <div className='charcarrusel flex gap-x-4 px-4 w-[81%] overflow-hidden hover:overflow-x-auto '>
         {charData.map((char, index) =>
 

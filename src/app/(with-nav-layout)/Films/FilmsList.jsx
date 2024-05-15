@@ -15,7 +15,7 @@ export default async function FilmsList ({ params }) {
   // films.map(film => (console.log(film.title)))
 
   return (
-    <div className='w-[60%] mx-auto grid grid-cols-3 gap-4  text-center'>
+    <div className='w-[60%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-center'>
       {films.map((film, index) =>
         <Link key={(index + 1)} href={'./Films/' + (index + 1)} className='group flex flex-col justify-center items-center py-4 h-80 w-60 mx-auto rounded-2xl transition-all border border-transparent hover:border-neutral-700 hover:bg-neutral-800 hover:bg-opacity-30'>
 
@@ -26,7 +26,7 @@ export default async function FilmsList ({ params }) {
           {/* Cuando se hace hover, aparecen los sith */}
           <div className='relative w-full h-full '>
             <Image
-              className=' m-auto absolute  inset-0 object-cover transition-all duration-300 opacity-100 scale-100 group-hover:opacity-0 group-hover:scale-0'
+              className='w-[50%] sm:w-[175px] m-auto absolute  inset-0 object-cover transition-all duration-300 opacity-100 scale-100 group-hover:opacity-0 group-hover:scale-0'
               src='/jedi.svg'
               alt='Jedi Logo'
               width={175}
@@ -34,7 +34,7 @@ export default async function FilmsList ({ params }) {
               priority
             />
             <Image
-              className='m-auto absolute  inset-0  object-cover transition-all duration-300 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
+              className='w-[50%] sm:w-[200px] m-auto absolute  inset-0  object-cover transition-all duration-300 opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
               src='/sith.svg'
               alt='Jedi Logo'
               width={200}
