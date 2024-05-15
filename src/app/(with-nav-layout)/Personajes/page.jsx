@@ -29,7 +29,6 @@ export default async function Personajes (context) {
       {/* A NavPagination le pasamos la pagina actual, la siguiente y la anterior. Mientras que CharPagination recibe los datos del fetch hecho. Cada vez que cambiamos de pagina, hace otra vez la llamada a la API  */}
       <NavPagination page={context.searchParams.page} prev={charsData.previous} next={charsData.next} />
       <CharPagination chars={chars} />
-      {/* <CharPagination chars={chars} /> */}
     </Suspense>
   )
 }
