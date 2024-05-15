@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Instrucciones de Ejecución
 
-First, run the development server:
+Para ejecutar en modo desarrollo, utiliza el siguiente comando:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologías Utilizadas
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Este proyecto se desarrolló utilizando Next.js, Tailwind CSS y JavaScript.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Control de Versiones
 
-To learn more about Next.js, take a look at the following resources:
+Se utilizó Git para llevar los cambios al repositorio remoto, siguiendo la nomenclatura propuesta en la consigna.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Proceso de Desarrollo
 
-## Deploy on Vercel
+Durante el desarrollo, se siguieron ciertas prácticas para mantener la organización y limpieza del proyecto.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Ramas y Merges:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Se realizaron merges principalmente con la rama `develop`, manteniendo la rama `main` más limpia.
+- Se crearon ramas por tarea y se ordenaron por su creación. Luego se realizaron los merges en `develop` para mantener una organización personal.
+
+### Comentarios sobre Commits:
+
+- Cada rama corresponde a una tarea asignada, con commits organizados por sección.
+- Se pueden encontrar comentarios detallados de los cambios en cada pull request. En GitHub, dentro de la lista de commits y merges, se puede hacer clic en el número correspondiente para ver mis comentarios de la pull request.
+  
+
+### Estilo de Código:
+
+- Se instaló ESLint Standard para identificar y corregir errores de escritura de manera eficiente.
+
+
+
+### Autocritica respecto al filtro:
+
+1. En el filtro de personajes, es necesario hacer doble clic en los checkbox para seleccionarlos. Se debe mejorar la lógica en `NavPagination`.
+2. Por ahora no pude dar paginacion a los personajes luego del filtrado, se muestran todos los personajes filtrados pero en una sola pagina aunque sean mas de 10.
+3. Me falta hacer que se agreguen mas filtros del mismo tipo al mismo tiempo. Por ahora puedo poner un tipo de color de ojos y un genero
+
+### Autocritica respecto al Lazy Loading:
+
+Es la primera vez que lo utilicé sinceramente. Es bastante interesante, lo voy a usar en mis próximos proyectos y seguir aprendiendo.
+
+
+## Recursos Utilizados
+
+- Se utilizaron varios iconos obtenidos de fuentes como [Star Wars Icons](https://icons8.com "‌") y [Logos, Symbols – Free Download PNG, SVG (icons8.com)](https://icons8.com "‌").
+- Los estilos iniciales del menú desplegable del filtro de personajes se basaron en [Tailwind CSS Filters - Flowbite](https://flowbite.com "‌").
