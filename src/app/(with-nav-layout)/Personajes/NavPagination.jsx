@@ -9,6 +9,7 @@ export default function NavPagination ({ prev, next, page }) {
   const [isDropdownOpen, setDropdownOpen] = useState(false)// State para abrir/cerrar el menu
   const [isEyeColorOpen, setEyeColorOpen] = useState(false)// State para abrir/cerrar el eye color
   const [isGenderOpen, setGenderOpen] = useState(false)// State para abrir/cerrar el Gender
+  const [filters, setFilters] = useState({ eyeColor: '', gender: '' })
 
   if (prev === null) { // Para que no baje de la pagina 1
     prev = `?page=${page}`
@@ -22,8 +23,30 @@ export default function NavPagination ({ prev, next, page }) {
   // {next === null ? next = `?page=${page}` : next}
 
   // Listas de ejemplo para dropdown menu
-  const eyeColorList = ['blue', 'yellow', 'Brown', 'red', 'blue-gray', 'black', 'orange', 'hazel', 'pink', 'unknown', 'red, blue', 'gold', 'green, yellow']
+  const eyeColorList = ['blue', 'yellow', 'brown', 'red', 'blue-gray', 'black', 'orange', 'hazel', 'pink', 'unknown', 'red, blue', 'gold', 'green, yellow']
   const genderList = ['male', 'female', 'n/a', 'none']
+
+  // Actualizar el filtro// se le pasa por parametro el tipo de filtro y el valor del checkbox seleccionado
+  const updateFilter = (filsterType, value) => { // Me costó un buen rato en youtube y stackoverflow hasta que me salió esto
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      [filsterType]: prevFilters[filsterType] === value ? '' : value // si por ejemplo [tipoFiltro]:viejoFiltro === nuevoFiltro ? *Se le saca el filtro* : nuevoFiltro //Basicamente si se hace check, se agrega, sino se quita
+
+    }))// Entonces el setFilter retorna el objeto con los valores checkeados
+  }
+
+  // Forma la url segun los filtros aplicados para que las flechas de navegacion funcionen si hay filtro o no
+  const constructUrl = (baseUrl, page, filters) => {
+    let url = `${baseUrl}${page}`
+
+    if (filters.eyeColor) { // Si esta checked, se le agrega a la url
+      url += `&eye_color=${filters.eyeColor}`
+    }
+    if (filters.gender) { // Si esta checked, se le agrega a la url
+      url += `&gender=${filters.gender}`
+    }
+    return url
+  }
   return (
 
     <header className='w-full mb-5'>
@@ -34,9 +57,9 @@ export default function NavPagination ({ prev, next, page }) {
         <span className='w-[10%]' />
         <div className='flex justify-between items-center w-[10%] text-2xl '>
 
-          <Link href={`/Personajes${getId(prev)}`} className='flex justify-center items-center rounded-full bg-slate-300 w-7 h-7 text-black font-bold hover:bg-slate-300/50 transition-all'>&lt;-</Link>
+          <Link href={constructUrl('/Personajes', getId(prev), filters)} className='flex justify-center items-center rounded-full bg-slate-300 w-7 h-7 text-black font-bold hover:bg-slate-300/50 transition-all'>&lt;-</Link>
           <span className='flex justify-center items-center bg-slate-300/80 w-10 h-8 rounded-full text-black font-bold'>{page}</span> {/* Mostramos la pagina actual */}
-          <Link href={`/Personajes${getId(next)}`} className='flex justify-center items-center rounded-full bg-slate-300 w-7 h-7 text-black font-bold hover:bg-slate-300/50 transition-all'>-&gt;</Link>
+          <Link href={constructUrl('/Personajes', getId(next), filters)} className='flex justify-center items-center rounded-full bg-slate-300 w-7 h-7 text-black font-bold hover:bg-slate-300/50 transition-all'>-&gt;</Link>
 
         </div>
         <div className='w-[10%] flex justify-center'>
@@ -50,7 +73,7 @@ export default function NavPagination ({ prev, next, page }) {
             >
               Filter
               <svg
-                className='w-4 h-4 ml-2'
+                className={`w-4 h-4 ml-2 transition-all ${isDropdownOpen ? 'rotate-180' : ''}`}
                 aria-hidden='true'
                 fill='none'
                 stroke='currentColor'
@@ -78,10 +101,20 @@ export default function NavPagination ({ prev, next, page }) {
                   {isEyeColorOpen && (
 
                     <ul className='mt-2 space-y-2 pl-4'>
-                      {eyeColorList.map((eye, index) => (
+                      {eyeColorList.map((eye, index) => (// 'eye' es cada elemento del array eyeColorList.
+
                         <li key={index} className='flex items-center'>
-                          <input id={eye} type='checkbox' value={eye} className='w-4 h-4  rounded text-primary-600 focus:ring-primary-600 ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500' />
+                          <Link href={constructUrl('/Personajes', '?page=1', filters)}>
+                            <input
+                              id={eye} type='checkbox' value={eye}
+                              checked={filters.eyeColor === eye} // Si el filtro que está en la url es igual al 'eye' de esta li, checked=true
+                              onChange={() => updateFilter('eyeColor', eye)} // Se fija en el tipo de filtro, en este caso 'eyeColor'. Y luego le pasamos el dato que se le agrega/quita al filtro
+                              className='w-4 h-4  rounded text-primary-600 focus:ring-primary-600 ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500'
+                            />
+                          </Link>
+
                           <label htmlFor={eye} className='ml-2 text-sm font-medium text-gray-100'>{eye}</label>
+
                         </li>
                       ))}
                     </ul>
@@ -102,8 +135,16 @@ export default function NavPagination ({ prev, next, page }) {
                   {isGenderOpen && (
                     <ul className='mt-2 space-y-2 pl-4'>
                       {genderList.map((gender, index) => (
-                        <li key={index} className='flex items-center'>
-                          <input id={gender} type='checkbox' value={gender} className='w-4 h-4 rounded text-primary-600 focus:ring-primary-500 focus:ring-primary-600 ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500' />
+                        <li key={index} checked={filters.gender === gender} className='flex items-center'>
+                          <Link href={constructUrl('/Personajes', '?page=1', filters)}>
+                            <input
+                              id={gender} type='checkbox' value={gender}
+                              checked={filters.gender === gender}
+                              onChange={() => updateFilter('gender', gender)}
+                              className='w-4 h-4 rounded text-primary-600 focus:ring-primary-500 focus:ring-primary-600 ring-offset-gray-700 focus:ring-2 bg-gray-600 border-gray-500'
+                            />
+                          </Link>
+
                           <label htmlFor={gender} className='ml-2 text-sm font-medium text-gray-100'>{gender}</label>
                         </li>
                       ))}
