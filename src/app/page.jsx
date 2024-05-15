@@ -38,7 +38,7 @@ export default function Home () {
         />
       </div>
 
-      <div className='w-full mb-32 flex justify-center text-center  lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left'>
+      <div className='w-full mb-32 flex flex-col sm:flex-row justify-center text-center  lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left'>
 
         <Link
           href='/Films'
