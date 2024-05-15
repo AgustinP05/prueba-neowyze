@@ -3,17 +3,12 @@
 // import CharPagination from './CharPagination'
 import NavPagination from './NavPagination'
 import { fetchChar } from './filterLogic'
-// import Image from 'next/image'
 
 // Aplicando Lazy Loading para los componentes mas pesados //Basado en https://nextjs.org/docs/pages/building-your-application/optimizing/lazy-loading
+import Loader from '@/app/Loader'
 import dynamic from 'next/dynamic'
 const DynamicCharPagination = dynamic(() => import('./CharPagination'), {
-  loading: () => {
-    return (
-      <p>...CARGANDOOOOOO PAGINACIOOOOON</p>
-    )
-  }
-
+  loading: () => <Loader />
 })
 
 export default async function Personajes (context) {
