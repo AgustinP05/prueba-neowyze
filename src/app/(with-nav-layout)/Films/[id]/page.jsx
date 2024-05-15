@@ -2,6 +2,10 @@
 import FilmSpecific from './FilmSpecific'
 import CharCarrusel from './CharCarrusel'
 
+// Para Lazy Loading
+import { Suspense } from 'react'
+import Loader from '@/app/Loader'
+
 const fetchOneFilm = (id) => {
   return fetch(`https://swapi.dev/api/films/${id}`)
     .then(res => res.json())
@@ -12,9 +16,9 @@ export default async function FilmSpecificPage ({ params }) {
   const film = await fetchOneFilm(id)
 
   return (
-    <section className='flex flex-col'>
+    <Suspense fallback={<Loader />} className='flex flex-col'>
       <FilmSpecific film={film} />
       <CharCarrusel charList={film.characters} />
-    </section>
+    </Suspense>
   )
 }
