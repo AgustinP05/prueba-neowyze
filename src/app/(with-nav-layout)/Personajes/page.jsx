@@ -5,7 +5,13 @@ import NavPagination from './NavPagination'
 import { fetchChar } from './filterLogic'
 
 export default async function Personajes (context) {
-  const charsData = await fetchChar(context.searchParams.page) // context es el '?page=X' actual que viene en la url. Por defecto es el 1
+  const page = context.searchParams.page
+  const filter = {
+    eyeColor: context.searchParams.eye_color || '',
+    gender: context.searchParams.gender || ''
+  }
+
+  const charsData = await fetchChar(page, filter) // el '?page=X' actual que viene en la url. Por defecto es el 1
   const chars = charsData.results // charData tiene toda la informacion del fetching. Sin embargo, toda la informacion que buscamos está dentro de results
   console.log({ context })
 
