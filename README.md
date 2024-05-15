@@ -1,5 +1,9 @@
 
 ## Instrucciones de Ejecución
+Primero hay que instalar node_modules y luego se creará tambien la carpeta .next
+```bash
+npm install
+```
 
 Para ejecutar en modo desarrollo, utiliza el siguiente comando:
 
